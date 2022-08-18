@@ -1,2 +1,2 @@
 FROM httpd:2.4
-COPY ./* /user/local/apache2/htdocs/
+COPY ./code/* /user/local/apache2/htdocs/
