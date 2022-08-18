@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('SCM') { 
             steps {
-                git 'https://github.com/arifislam007/btl-phone-directory' 
+                git branch: 'main', url: 'https://github.com/arifislam007/btl-phone-directory'
             }
         }
 		
