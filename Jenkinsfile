@@ -12,14 +12,15 @@ pipeline {
 			steps {
 				sshPublisher(publishers: [sshPublisherDesc(configName: 'dockerhost', 
 					transfers: [sshTransfer(cleanRemote: false, excludes: '', 
-					execCommand: '''cd /root/btlphonebook;
-					docker build -t btlpnone:v1 .;
-					docker stop btlphone;
-					docker rm btlphone;
-					docker run -itd --name btlphone -p 80:80 btlpnone:v1''', 
+					execCommand: '''cd /root/btlphonebookv2;
+					docker images rm btlpnone:v2;
+					docker build -t btlpnone:v2 .;
+					docker stop btlphonev2;
+					docker rm btlphonev2;
+					docker run -itd --name btlphonev2 -p 82:80 btlpnone:v2''', 
 					execTimeout: 120000, flatten: false, makeEmptyDirs: false, 
 					noDefaultExcludes: false, patternSeparator: '[, ]+', 
-					remoteDirectory: 'btlphonebook', remoteDirectorySDF: false, 
+					remoteDirectory: 'btlphonebookv2', remoteDirectorySDF: false, 
 					sourceFiles: '**/*')], 
 					usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                
